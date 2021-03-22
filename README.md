@@ -1,6 +1,10 @@
 # captain_marvel
 
-A new Flutter project.
+Captain Marvel App:
+The application was created using the flutter framework. 
+
+Execution steps:
+Download the APK from the release tab
 
 ## Getting Started
 
