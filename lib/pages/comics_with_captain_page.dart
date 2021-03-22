@@ -6,21 +6,22 @@ import 'package:captain_marvel/templates/shimmer_comic_template.dart';
 import 'package:captain_marvel/utilities/shared_operations.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class ComicsPage extends StatefulWidget {
-  static String routeName = "/comicsPage";
+class ComicsWithCaptainMarvelPage extends StatefulWidget {
+  static String routeName = "/comicsWithCaptainMarvel";
   @override
-  _ComicsPageState createState() => _ComicsPageState();
+  _ComicsWithCaptainMarvelPageState createState() =>
+      _ComicsWithCaptainMarvelPageState();
 }
 
-class _ComicsPageState extends State<ComicsPage> {
+class _ComicsWithCaptainMarvelPageState
+    extends State<ComicsWithCaptainMarvelPage> {
   final PagingController<int, ComicInfo> _pagingController =
       PagingController(firstPageKey: 0);
+
   MarvelAPI request = new MarvelAPI();
+
   static const _pageSize = 20;
-  String orderData = "";
-  bool sortState = false;
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class _ComicsPageState extends State<ComicsPage> {
   Future<void> _fetchPage(int pageKey) async {
     try {
       final data =
-          await request.getComics(pageKey, _pageSize, order: orderData);
+          await request.getComicsFeaturingCaptainMarvel(pageKey, _pageSize);
       final newComics = data.results;
       final isLastPage = newComics.length < _pageSize;
       if (isLastPage) {
@@ -60,28 +61,6 @@ class _ComicsPageState extends State<ComicsPage> {
           height: dimension.width * 0.1,
         ),
         centerTitle: true,
-        actions: [
-          Container(
-            margin: EdgeInsets.only(right: dimension.width * 0.04),
-            child: InkWell(
-                onTap: () {
-                  if (sortState) {
-                    orderData = "";
-                  } else {
-                    orderData = "orderBy=onsaleDate&";
-                  }
-                  sortState = !sortState;
-
-                  _pagingController.itemList = null;
-                  _pagingController.nextPageKey = 0;
-                  setState(() {});
-                },
-                child: Tooltip(
-                    message: 'Order By Release Date',
-                    child: Icon(MdiIcons.orderAlphabeticalAscending,
-                        color: sortState ? Colors.red : Colors.white))),
-          )
-        ],
       ),
       body: Container(
         margin: EdgeInsets.only(
@@ -92,7 +71,7 @@ class _ComicsPageState extends State<ComicsPage> {
           children: [
             Container(
               child: Text(
-                "Captain Marvel's Comics",
+                "Comics Featuring Captain Marvel",
                 style: CustomTextStyle.titleWhite2(),
               ),
             ),
