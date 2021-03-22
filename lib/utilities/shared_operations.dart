@@ -67,8 +67,8 @@ class SharedOperations {
 
   static void showMessage(String message) {
     Fluttertoast.showToast(
-        msg: "This is Center Short Toast",
-        toastLength: Toast.LENGTH_LONG,
+        msg: message,
+        toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.grey[500],

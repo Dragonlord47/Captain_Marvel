@@ -176,19 +176,6 @@ class ComicDetailsPage extends StatelessWidget {
                 height: dimension.height * 0.006,
               ),
               Text(
-                "Variant Description:",
-                style: CustomTextStyle.subTitleWhite(),
-              ),
-              Text(
-                appProvider.comicInFocus.variantDescription == null
-                    ? "No description"
-                    : appProvider.comicInFocus.variantDescription,
-                style: CustomTextStyle.subTitleWhiteNB(),
-              ),
-              SizedBox(
-                height: dimension.height * 0.006,
-              ),
-              Text(
                 "Variants:",
                 style: CustomTextStyle.subTitleWhite(),
               ),
@@ -277,17 +264,6 @@ class ComicDetailsPage extends StatelessWidget {
                 height: dimension.height * 0.006,
               ),
               Text(
-                "Events:",
-                style: CustomTextStyle.subTitleWhite(),
-              ),
-              Text(
-                getSeries(appProvider.comicInFocus.events.items),
-                style: CustomTextStyle.subTitleWhiteNB(),
-              ),
-              SizedBox(
-                height: dimension.height * 0.006,
-              ),
-              Text(
                 "Modified:",
                 style: CustomTextStyle.subTitleWhite(),
               ),
@@ -295,6 +271,9 @@ class ComicDetailsPage extends StatelessWidget {
                 SharedOperations.convertDate(
                     DateTime.parse(appProvider.comicInFocus.modified)),
                 style: CustomTextStyle.subTitleWhiteNB(),
+              ),
+              SizedBox(
+                height: dimension.height * 0.03,
               ),
             ],
           ),

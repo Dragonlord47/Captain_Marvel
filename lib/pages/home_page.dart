@@ -176,21 +176,19 @@ class _HomePageState extends State<HomePage> {
                               SharedOperations.launchURL(
                                   "https://www.facebook.com/CaptainMarvelOfficial");
                             },
-                            child: InkWell(
-                              onTap: () {
-                                SharedOperations.launchURL(
-                                    "https://twitter.com/captainmarvel");
-                              },
-                              child: Icon(
-                                MdiIcons.facebook,
-                                color: CustomTextStyle.silver(),
-                              ),
+                            child: Icon(
+                              MdiIcons.facebook,
+                              color: CustomTextStyle.silver(),
                             ),
                           ),
                           SizedBox(
                             width: dimension.width * 0.05,
                           ),
                           InkWell(
+                            onTap: () {
+                              SharedOperations.launchURL(
+                                  "https://twitter.com/captainmarvel");
+                            },
                             child: Icon(
                               MdiIcons.twitter,
                               color: CustomTextStyle.silver(),
@@ -240,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                                     shrinkWrap: true,
                                     controller: listCtrl,
                                     children: List<ShimmerComicTemplate>.filled(
-                                        10, ShimmerComicTemplate()),
+                                        4, ShimmerComicTemplate()),
                                   ),
                                 ),
                               )

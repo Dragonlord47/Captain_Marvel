@@ -83,21 +83,19 @@ class _ComicsWithCaptainMarvelPageState
               child: PagedListView<int, ComicInfo>(
                 pagingController: _pagingController,
                 builderDelegate: PagedChildBuilderDelegate<ComicInfo>(
-                    itemBuilder: (context, item, index) =>
-                        ComicTemplate(comic: item),
-                    noItemsFoundIndicatorBuilder: (_) => Center(
-                          child: Text("No comics found.",
-                              style: CustomTextStyle.subTitleWhite()),
-                        ),
-                    firstPageProgressIndicatorBuilder: (_) => Container(
-                          child: Column(
-                            children: List<ShimmerComicTemplate>.filled(
-                                10, ShimmerComicTemplate()),
-                          ),
-                        ),
-                    noMoreItemsIndicatorBuilder: (_) {
-                      SharedOperations.showMessage("No more comics");
-                    }),
+                  itemBuilder: (context, item, index) =>
+                      ComicTemplate(comic: item),
+                  noItemsFoundIndicatorBuilder: (_) => Center(
+                    child: Text("No comics found.",
+                        style: CustomTextStyle.subTitleWhite()),
+                  ),
+                  firstPageProgressIndicatorBuilder: (_) => Container(
+                    child: Column(
+                      children: List<ShimmerComicTemplate>.filled(
+                          10, ShimmerComicTemplate()),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
